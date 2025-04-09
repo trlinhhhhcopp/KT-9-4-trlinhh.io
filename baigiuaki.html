@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài KT GKI 9-4</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+      position: relative;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #000;
+      padding: 8px 12px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .search-container input {
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .carousel {
+      width: 100%;
+      
+      overflow: hidden;
+    }
+    .carousel img {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 200px;
+      border-bottom-right-radius: 200px;
+    }
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+    .product {
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .product:hover {
+      background-color: #f9f9f9;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+      border-radius: 4px;
+    }
+    .product:hover img {
+      transform: scale(1.05);
+    }
+    .cart-icon {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #000;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    #check {
+      display: none;
+    }
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .menu {
+      display: flex;
+      gap: 15px;
+    }
+    .menu a:hover {
+      background-color: #e0e0e0;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 1024px) {
+      .carousel {
+        display: none;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hamburger {
+        display: block;
+      }
+      #check:checked ~ .menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: white;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 999;
+      }
+      .menu {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+      #check:checked ~ .menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: white;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 999;
+      }
+      .menu {
+        display: none;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <input type="checkbox" id="check">
+    <label for="check" class="hamburger"><i class="fa fa-bars"></i></label>
+    <nav class="menu">
+      <a href="#">NỮ</a>
+      <a href="#">NAM</a>
+      <a href="#">SIÊU DEAL T4</a>
+      <a href="#">BỘ SƯU TẬP</a>
+      <a href="#">VỀ CHÚNG TÔI</a>
+    </nav>
+    <img src="ảnh tke web.jpg" width="70px" height="50px">
+    <div class="icons">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Tìm sản phẩm...">
+        <i class="fa fa-search"></i>
+      </div>
+      <i class="fa fa-shopping-cart" style="font-size: 20px; cursor: pointer;"></i>
+    </div>
+  </header>
+
+  <div class="carousel">
+    <img src="ảnh dạ vũ.jpg" alt="Banner">
+  </div>
+
+  <h2>NEW ARRIVAL</h2>
+  <div class="product-grid">
+    <div class="product">
+      <img src="sp1.jpg" alt="sp1">
+      <p>Moonlit Lace - Áo sơ mi lụa</p>
+      <p style="color:red">1.800.000</p>
+<i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+    <div class="product">
+      <img src="sp2.jpg" alt="sp2">
+      <p>Obsidian Curve - Chân váy</p>
+      <p style="color:red">1.400.000</p>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+    <div class="product">
+      <img src="sp3.jpg" alt="sp3">
+      <p>Mystic Veil Blouse</p>
+      <p style="color:red">2.190.000</p>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+    <div class="product">
+      <img src="sp4.jpg" alt="sp4">
+      <p>Golden Gienne Dress</p>
+      <p style="color:red">989.000</p>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+  </div>
+
+  <h2>GIẢM 50% CÁC SẢN PHẨM</h2>
+  <div class="product-grid">
+    <div class="product">
+      <img src="sp5.jpg" alt="sp5">
+      <p>Cocktail Ballet Dress</p>
+      <p style="color:red">1.400.000</p>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+    <div class="product">
+      <img src="sp6.jpg" alt="sp6">
+      <p>Bliss Dress</p>
+      <p style="color:red">845.000</p>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+    <div class="product">
+      <img src="sp7.jpg" alt="sp7">
+      <p>Áo vest Sophía Elegance</p>
+      <p style="color:red">754.000</p>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+    <div class="product">
+      <img src="sp8.jpg" alt="sp8">
+      <p>Áo khoác blazer V cổ</p>
+      <p style="color:red">1.099.000</p>
+      <i class="fa fa-shopping-cart cart-icon"></i>
+    </div>
+  </div>
+  <div class="carousel">
+    <img src="ảnh tkw.jpg" alt="carousel">
+  </div>
+
+  <footer>
+    <p>Họ tên: Trần Thục Linh</p>
+    <p>Lớp: TUDD2024</p>
+    <p>Khoa: Toán-CNTT</p>
+    <p>Email: tranthuclinh1212@gmail.com</p>
+    <p>Điện thoại: 0967737806</p>
+  </footer>
+</body>
+</html>
